@@ -1,0 +1,10 @@
+#language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t antonsemikin/docker-sandbox-AWS -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true antonsemikin/docker-sandbox-AWS npm run test
